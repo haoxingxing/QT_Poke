@@ -18,6 +18,9 @@ public:
     void get();
 
 private slots:
+
+    void on_chat_destroyed();
+
     void on_pushButton_clicked();
 
 private:

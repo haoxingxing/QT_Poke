@@ -46,11 +46,7 @@ void network::curl(std::string url)
 }
 std::string curl(std::string url) {
     network *n=new network();
-    n->show();
-    std::string reply;
     n->curl(url);
-    //n->deleteLater();
-    reply=n->reply;
     n->deleteLater();
-    return reply;
+    return n->reply;
 }

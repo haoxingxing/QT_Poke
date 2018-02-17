@@ -30,7 +30,8 @@ SOURCES += \
     user.cpp \
     chat.cpp \
     network.cpp \
-    base64.cpp
+    base64.cpp \
+    chat_sendmsg.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,10 +39,12 @@ HEADERS += \
     user.h \
     chat.h \
     network.h \
-    base64.h
+    base64.h \
+    chat_sendmsg.h
 
 FORMS += \
         mainwindow.ui \
     lor_menu.ui \
     chat.ui \
-    network.ui
+    network.ui \
+    chat_sendmsg.ui
