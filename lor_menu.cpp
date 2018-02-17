@@ -46,11 +46,6 @@ void LOR_menu::on_GO_clicked()
             username=ui->Username_l->text().toStdString();
             password=ui->Password_l->text().toStdString();
             accept();
-            MainWindow *mainw=new MainWindow(0,this->username,this->password);
-            //MainWindow mai(,)
-            mainw->username=this->username;
-            mainw->password=this->password;
-            mainw->show();
         }
         else
         {
@@ -69,11 +64,6 @@ void LOR_menu::on_GO_clicked()
             username=ui->Username_r->text().toStdString();
             password=ui->Password_r->text().toStdString();
             accept();
-            MainWindow *mainw=new MainWindow(0,this->username,this->password);
-            //MainWindow mai(,)
-            mainw->username=this->username;
-            mainw->password=this->password;
-            mainw->show();
         }
         else
         {
