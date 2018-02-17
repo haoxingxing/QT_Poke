@@ -1,6 +1,6 @@
 #include "network.h"
 #include "ui_network.h"
-
+#include "unistd.h"
 network::network(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::network)
@@ -23,7 +23,7 @@ void network::curl(std::string url)
     ui->message->setText("(2/4)Sending..");
     ui->progressBar->setValue(10);
     QObject::connect(reply, SIGNAL(finished()), &temp_loop, SLOT(quit()));
-    ui->message->setText("(3/4)Replying..");
+    ui->message->setText("(3/4)Replying..");    
     ui->progressBar->setValue(40);
     temp_loop.exec();
     qDebug()<<"start";
@@ -35,7 +35,7 @@ void network::curl(std::string url)
         //std::cout<<rlt.toStdString();
         ui->message->setText("(4/4)OK.");
         ui->progressBar->setValue(100);
-
+        ui->superdebug->setText(QString::fromStdString(this->reply));
     }
     else
     {
@@ -46,7 +46,11 @@ void network::curl(std::string url)
 }
 std::string curl(std::string url) {
     network *n=new network();
+    //n->show();
+    std::string reply;
     n->curl(url);
+    reply=n->reply;
     n->deleteLater();
-    return n->reply;
+    delete n;
+    return reply;
 }

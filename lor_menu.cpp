@@ -9,28 +9,15 @@ LOR_menu::LOR_menu(QWidget *parent) :
     ui->setupUi(this);
     ui->main->show();
     ui->message->hide();
-    ui->Login_MENU->show();
-    ui->Reg_MENU->hide();
+    //ui->Login_MENU->show();
+    //ui->Reg_MENU->hide();
     reg_login=0;
-
+    connect(this,SIGNAL(rejected()),this,SLOT(window_closed_slot()));
 }
 
 LOR_menu::~LOR_menu()
 {
     delete ui;
-}
-void LOR_menu::on_turn_reg_clicked()
-{
-    ui->Reg_MENU->show();
-    ui->Login_MENU->hide();
-    reg_login=1;
-}
-
-void LOR_menu::on_turn_login_clicked()
-{
-    ui->Login_MENU->show();
-    ui->Reg_MENU->hide();
-    reg_login=0;
 }
 void LOR_menu::on_GO_clicked()
 {
@@ -46,11 +33,8 @@ void LOR_menu::on_GO_clicked()
             username=ui->Username_l->text().toStdString();
             password=ui->Password_l->text().toStdString();
             accept();
-            MainWindow *mainw=new MainWindow(0,this->username,this->password);
-            //MainWindow mai(,)
-            mainw->username=this->username;
-            mainw->password=this->password;
-            mainw->show();
+            suss=0;
+            wait_lor_menu->quit();
         }
         else
         {
@@ -62,18 +46,15 @@ void LOR_menu::on_GO_clicked()
     else
     {
         user u;
-        if (u.reg(ui->Username_r->text().toStdString(),ui->Password_r->text().toStdString()))
+        if (u.reg(ui->Username_l->text().toStdString(),ui->Password_l->text().toStdString()))
         {
             ui->GO->hide();
             ui->main->hide();
-            username=ui->Username_r->text().toStdString();
-            password=ui->Password_r->text().toStdString();
+            username=ui->Username_l->text().toStdString();
+            password=ui->Password_l->text().toStdString();
             accept();
-            MainWindow *mainw=new MainWindow(0,this->username,this->password);
-            //MainWindow mai(,)
-            mainw->username=this->username;
-            mainw->password=this->password;
-            mainw->show();
+            suss=0;
+            wait_lor_menu->quit();
         }
         else
         {
@@ -84,3 +65,24 @@ void LOR_menu::on_GO_clicked()
     }
 }
 
+
+void LOR_menu::on_turn_clicked()
+{
+    if (reg_login==0)
+    {
+        reg_login=1;
+        ui->Tip->setText("Please Register");
+        ui->turn->setText("Login?");
+    }
+    else
+    {
+        reg_login=0;
+        ui->Tip->setText("Please Login");
+        ui->turn->setText("Reg?");
+    }
+}
+
+void LOR_menu::window_closed_slot(){
+    suss=1;
+    wait_lor_menu->quit();
+}

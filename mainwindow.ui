@@ -38,8 +38,8 @@
    <string>Poke</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../下载/18-Star-714.png</normaloff>../下载/18-Star-714.png</iconset>
+   <iconset resource="images.qrc">
+    <normaloff>:/star.png</normaloff>:/star.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="mode">
@@ -97,7 +97,7 @@
    <widget class="QPushButton" name="Chat">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>30</y>
       <width>89</width>
       <height>25</height>
@@ -109,10 +109,16 @@
     <property name="text">
      <string>Chat</string>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/chat_1016px_1208477_easyicon.net.png</normaloff>:/chat_1016px_1208477_easyicon.net.png</iconset>
+    </property>
    </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -18,10 +18,9 @@ public:
     void get();
 
 private slots:
-
-    void on_chat_destroyed();
-
     void on_pushButton_clicked();
+    void s_get();
+    //void on_commandLinkButton_clicked();
 
 private:
     Ui::chat *ui;
